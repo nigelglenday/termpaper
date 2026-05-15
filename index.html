@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>termpaper - TUI tools for Claude Code</title>
+<meta name="description" content="A suite of TUI tools for managing Claude Code state: sessions, transcripts, skills." />
+<link rel="icon" href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'&gt;&lt;text y='26' font-size='26'&gt;&#9608;&lt;/text&gt;&lt;/svg&gt;" />
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --fg: #d9d9d9;
+    --dim: #6e6e6e;
+    --cyan: #00d4d4;
+    --orange: #ff8c1a;
+    --rule: #2a2a2a;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', Menlo, Consolas, monospace;
+    font-size: 14px;
+    line-height: 1.55;
+  }
+  main {
+    max-width: 80ch;
+    margin: 0 auto;
+    padding: 2rem 1.25rem 4rem;
+  }
+  pre { margin: 0; white-space: pre; overflow-x: auto; }
+  .banner {
+    color: var(--cyan);
+    font-size: 11px;
+    line-height: 1.0;
+    margin: 0 0 1rem;
+  }
+  @media (min-width: 720px) { .banner { font-size: 13px; } }
+  .rule { color: var(--rule); margin: 1rem 0; }
+  .prompt { color: var(--cyan); }
+  .blink {
+    display: inline-block;
+    width: 0.5em;
+    background: var(--cyan);
+    animation: blink 1s steps(2) infinite;
+  }
+  @keyframes blink { 0%, 50% { opacity: 1; } 50.01%, 100% { opacity: 0; } }
+  .tagline { color: var(--fg); margin: 0.5rem 0 0.25rem; }
+  .small { color: var(--dim); }
+  h2 {
+    color: var(--orange);
+    font-size: 14px;
+    font-weight: 400;
+    margin: 2rem 0 0.5rem;
+    letter-spacing: 0.04em;
+  }
+  ul { list-style: none; padding: 0; margin: 0; }
+  li.tool {
+    border-left: 1px solid var(--rule);
+    padding: 0.25rem 0 0.75rem 1rem;
+    margin: 0 0 0.75rem;
+  }
+  li.tool .name {
+    color: var(--cyan);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  li.tool .name:hover { color: var(--orange); text-decoration: underline; }
+  li.tool .kind { color: var(--dim); margin-left: 0.5rem; }
+  li.tool .desc { color: var(--fg); margin: 0.15rem 0 0.4rem; }
+  li.tool .install { color: var(--dim); font-size: 12px; }
+  li.tool .install code { color: var(--orange); background: transparent; }
+  a { color: var(--cyan); text-decoration: none; }
+  a:hover { color: var(--orange); text-decoration: underline; }
+  footer {
+    color: var(--dim);
+    margin-top: 2.5rem;
+    font-size: 12px;
+  }
+  footer a { color: var(--dim); }
+  footer a:hover { color: var(--cyan); }
+</style>
+</head>
+<body>
+<main>
+
+<pre class="banner">████████╗███████╗██████╗ ███╗   ███╗██████╗  █████╗ ██████╗ ███████╗██████╗
+╚══██╔══╝██╔════╝██╔══██╗████╗ ████║██╔══██╗██╔══██╗██╔══██╗██╔════╝██╔══██╗
+   ██║   █████╗  ██████╔╝██╔████╔██║██████╔╝███████║██████╔╝█████╗  ██████╔╝
+   ██║   ██╔══╝  ██╔══██╗██║╚██╔╝██║██╔═══╝ ██╔══██║██╔═══╝ ██╔══╝  ██╔══██╗
+   ██║   ███████╗██║  ██║██║ ╚═╝ ██║██║     ██║  ██║██║     ███████╗██║  ██║
+   ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝     ╚═╝  ╚═╝╚═╝     ╚══════╝╚═╝  ╚═╝</pre>
+
+<p class="tagline">A suite of TUI tools for managing Claude Code state.</p>
+<p class="small">Sessions, transcripts, skills. From the terminal. macOS, Python, MIT.</p>
+
+<pre class="rule">================================================================================</pre>
+
+<p><span class="prompt">C:\TERMPAPER&gt;</span> dir<span class="blink">&nbsp;</span></p>
+
+<h2>The suite</h2>
+
+<ul>
+  <li class="tool">
+    <a class="name" href="https://github.com/nigelglenday/a-team">a-team</a>
+    <span class="kind">// sessions</span>
+    <p class="desc">Manage parallel Claude Code sessions in Ghostty. One command restores every terminal session after a reboot, in the right folder, with the right window title. Categories, scratch sessions, picker UI.</p>
+    <p class="install"><code>pipx install git+https://github.com/nigelglenday/a-team</code></p>
+  </li>
+
+  <li class="tool">
+    <a class="name" href="https://github.com/nigelglenday/whispertty">whispertty</a>
+    <span class="kind">// transcripts</span>
+    <p class="desc">Record audio, transcribe with Whisper (mlx-whisper on Apple Silicon), optionally label speakers with pyannote. Transcripts land as plain files in <code>~/Documents/transcripts/</code> so other agents can read them directly. No cloud, no MCP, no API.</p>
+    <p class="install"><code>pipx install git+https://github.com/nigelglenday/whispertty</code></p>
+  </li>
+
+  <li class="tool">
+    <a class="name" href="https://github.com/nigelglenday/skillbox">skillbox</a>
+    <span class="kind">// skills</span>
+    <p class="desc">Inventory and manage Claude Code skills, slash commands, and subagents. Unified picker across your user-level installs, every plugin's bundled set, and per-project <code>.claude/</code> directories. Audit duplicates and prune sprawl.</p>
+    <p class="install"><code>pipx install git+https://github.com/nigelglenday/skillbox</code></p>
+  </li>
+</ul>
+
+<pre class="rule">================================================================================</pre>
+
+<h2>Why a suite</h2>
+
+<p>Each tool started as a one-off scratch to fix a specific friction. They turned out to share the same shape: a Python pipx CLI with a Questionary picker, an ASCII splash, and plain-file output that any agent on the same machine can grep, cat, or read without an API.</p>
+
+<p>That's the unifying idea. Plain files as the integration layer. Everything else is convenience.</p>
+
+<h2>Install all three</h2>
+
+<pre>brew install pipx
+pipx ensurepath
+pipx install git+https://github.com/nigelglenday/a-team
+pipx install git+https://github.com/nigelglenday/whispertty
+pipx install git+https://github.com/nigelglenday/skillbox</pre>
+
+<footer>
+<pre class="rule">--------------------------------------------------------------------------------</pre>
+by <a href="https://looksgerat.com">Nigel Glenday</a> &nbsp;&middot;&nbsp; <a href="https://github.com/nigelglenday">github</a> &nbsp;&middot;&nbsp; MIT licensed
+</footer>
+
+</main>
+</body>
+</html>
