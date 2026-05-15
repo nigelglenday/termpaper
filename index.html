@@ -123,23 +123,31 @@
     <p class="desc">Inventory and manage Claude Code skills, slash commands, and subagents. Unified picker across your user-level installs, every plugin's bundled set, and per-project <code>.claude/</code> directories. Audit duplicates and prune sprawl.</p>
     <p class="install"><code>pipx install git+https://github.com/nigelglenday/skillbox</code></p>
   </li>
+
+  <li class="tool">
+    <a class="name" href="https://github.com/nigelglenday/eagent">eagent</a>
+    <span class="kind">// orchestration</span>
+    <p class="desc">A multi-session executive assistant pattern for Claude Code. One orchestrator session plus narrow worker sessions (email triage, scheduling, etc.) communicating via file-based inboxes and a shared markdown knowledge base. Use as a starter, not a pip install.</p>
+    <p class="install"><code>git clone https://github.com/nigelglenday/eagent</code></p>
+  </li>
 </ul>
 
 <pre class="rule">================================================================================</pre>
 
 <h2>Why a suite</h2>
 
-<p>Each tool started as a one-off scratch to fix a specific friction. They turned out to share the same shape: a Python pipx CLI with a Questionary picker, an ASCII splash, and plain-file output that any agent on the same machine can grep, cat, or read without an API.</p>
+<p>Each tool started as a one-off scratch to fix a specific friction. They turned out to share the same shape: a Python pipx CLI with a Questionary picker (or a starter pattern, in eagent's case), an ASCII splash, and plain-file output that any agent on the same machine can grep, cat, or read without an API.</p>
 
 <p>That's the unifying idea. Plain files as the integration layer. Everything else is convenience.</p>
 
-<h2>Install all three</h2>
+<h2>Install</h2>
 
 <pre>brew install pipx
 pipx ensurepath
 pipx install git+https://github.com/nigelglenday/a-team
 pipx install git+https://github.com/nigelglenday/whispertty
-pipx install git+https://github.com/nigelglenday/skillbox</pre>
+pipx install git+https://github.com/nigelglenday/skillbox
+git clone https://github.com/nigelglenday/eagent</pre>
 
 <footer>
 <pre class="rule">--------------------------------------------------------------------------------</pre>
