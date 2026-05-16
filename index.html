@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>termpaper - TUI tools for Claude Code</title>
-<meta name="description" content="A suite of TUI tools for managing Claude Code state: sessions, transcripts, skills." />
+<meta name="description" content="A set of terminal tools for managing Claude Code state: sessions, transcripts, skills, orchestration." />
 <link rel="icon" href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'&gt;&lt;text y='26' font-size='26'&gt;&#9608;&lt;/text&gt;&lt;/svg&gt;" />
 <style>
   :root {
@@ -30,7 +30,7 @@
     margin: 0 auto;
     padding: 2rem 1.25rem 4rem;
   }
-  pre { margin: 0; white-space: pre; overflow-x: auto; }
+  pre { margin: 0; white-space: pre; overflow: visible; }
   .banner {
     color: var(--cyan);
     font-size: 11px;
@@ -38,7 +38,7 @@
     margin: 0 0 1rem;
   }
   @media (min-width: 720px) { .banner { font-size: 13px; } }
-  .rule { color: var(--rule); margin: 1rem 0; }
+  .spacer { height: 0.75rem; }
   .prompt { color: var(--cyan); }
   .blink {
     display: inline-block;
@@ -74,6 +74,13 @@
   li.tool .install code { color: var(--orange); background: transparent; }
   a { color: var(--cyan); text-decoration: none; }
   a:hover { color: var(--orange); text-decoration: underline; }
+  .badges {
+    margin: 0.5rem 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .badges img { height: 20px; }
   footer {
     color: var(--dim);
     margin-top: 2.5rem;
@@ -93,14 +100,20 @@
    ██║   ███████╗██║  ██║██║ ╚═╝ ██║██║     ██║  ██║██║     ███████╗██║  ██║
    ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝     ╚═╝  ╚═╝╚═╝     ╚══════╝╚═╝  ╚═╝</pre>
 
-<p class="tagline">A suite of TUI tools for managing Claude Code state.</p>
-<p class="small">Sessions, transcripts, skills. From the terminal. macOS, Python, MIT.</p>
+<p class="tagline">A set of terminal tools for managing Claude Code state.</p>
+<p class="small">Sessions, transcripts, skills. From the terminal.</p>
+<p class="badges">
+  <a href="https://github.com/nigelglenday?tab=repositories&q=topic%3Atermpaper"><img alt="Set: termpaper" src="https://img.shields.io/badge/set-termpaper-cyan"></a>
+  <a href="https://opensource.org/licenses/MIT"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-yellow"></a>
+  <img alt="Platform: macOS" src="https://img.shields.io/badge/platform-macOS-black">
+  <img alt="Python 3.11+" src="https://img.shields.io/badge/python-3.11%2B-blue">
+</p>
 
 <pre class="rule">================================================================================</pre>
 
-<p><span class="prompt">C:\TERMPAPER&gt;</span> dir<span class="blink">&nbsp;</span></p>
+<p><span class="prompt">~/termpaper $</span> ls<span class="blink">&nbsp;</span></p>
 
-<h2>The suite</h2>
+<h2>The set</h2>
 
 <ul>
   <li class="tool">
@@ -111,15 +124,8 @@
   </li>
 
   <li class="tool">
-    <a class="name" href="https://github.com/nigelglenday/whispertty">whispertty</a>
-    <span class="kind">// transcripts</span>
-    <p class="desc">Record audio, transcribe with Whisper (mlx-whisper on Apple Silicon), optionally label speakers with pyannote. Transcripts land as plain files in <code>~/Documents/transcripts/</code> so other agents can read them directly. No cloud, no MCP, no API.</p>
-    <p class="install"><code>pipx install git+https://github.com/nigelglenday/whispertty</code></p>
-  </li>
-
-  <li class="tool">
     <a class="name" href="https://github.com/nigelglenday/skillbox">skillbox</a>
-    <span class="kind">// skills</span>
+    <span class="kind">// capabilities</span>
     <p class="desc">Inventory and manage Claude Code skills, slash commands, and subagents. Unified picker across your user-level installs, every plugin's bundled set, and per-project <code>.claude/</code> directories. Audit duplicates and prune sprawl.</p>
     <p class="install"><code>pipx install git+https://github.com/nigelglenday/skillbox</code></p>
   </li>
@@ -127,18 +133,19 @@
   <li class="tool">
     <a class="name" href="https://github.com/nigelglenday/eagent">eagent</a>
     <span class="kind">// orchestration</span>
-    <p class="desc">A multi-session executive assistant pattern for Claude Code. One orchestrator session plus narrow worker sessions (email triage, scheduling, etc.) communicating via file-based inboxes and a shared markdown knowledge base. Use as a starter, not a pip install.</p>
+    <p class="desc">Agents talk to each other. Each Claude Code session has an inbox folder; an agent writes a markdown file into it and hooks surface the message automatically. Workers run on <code>/loop</code> schedules (email triage, calendar prep) and can spawn or message other agents. Knowledge persists in a markdown KB (Karpathy LLM-wiki pattern). Optional a-team integration registers each worker as a switchable agent. A multi-session executive assistant starter, not a pip install.</p>
     <p class="install"><code>git clone https://github.com/nigelglenday/eagent</code></p>
+  </li>
+
+  <li class="tool">
+    <a class="name" href="https://github.com/nigelglenday/whispertty">whispertty</a>
+    <span class="kind">// input</span>
+    <p class="desc">Record a meeting or call, transcribe with Whisper (mlx-whisper on Apple Silicon), optionally label speakers with pyannote. Batch, not real-time. Transcripts land as plain files in <code>~/Documents/transcripts/</code> so any agent on the same machine can read them. No cloud, no MCP, no API.</p>
+    <p class="install"><code>pipx install git+https://github.com/nigelglenday/whispertty</code></p>
   </li>
 </ul>
 
 <pre class="rule">================================================================================</pre>
-
-<h2>Why a suite</h2>
-
-<p>Each tool started as a one-off scratch to fix a specific friction. They turned out to share the same shape: a Python pipx CLI with a Questionary picker (or a starter pattern, in eagent's case), an ASCII splash, and plain-file output that any agent on the same machine can grep, cat, or read without an API.</p>
-
-<p>That's the unifying idea. Plain files as the integration layer. Everything else is convenience.</p>
 
 <h2>Install</h2>
 
@@ -151,7 +158,7 @@ git clone https://github.com/nigelglenday/eagent</pre>
 
 <footer>
 <pre class="rule">--------------------------------------------------------------------------------</pre>
-by <a href="https://looksgerat.com">Nigel Glenday</a> &nbsp;&middot;&nbsp; <a href="https://github.com/nigelglenday">github</a> &nbsp;&middot;&nbsp; MIT licensed
+by <a href="https://looksgerat.com">Nigel Glenday</a> &nbsp;&middot;&nbsp; <a href="https://github.com/nigelglenday">github</a> &nbsp;&middot;&nbsp; <a href="https://math.horse">math.horse</a> &nbsp;&middot;&nbsp; MIT licensed
 </footer>
 
 </main>
