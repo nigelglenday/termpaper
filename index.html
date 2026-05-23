@@ -141,6 +141,13 @@
   </li>
 
   <li class="tool">
+    <a class="name" href="https://github.com/nigelglenday/crmmy">crmmy</a>
+    <span class="kind">// records</span>
+    <p class="desc">A file-based CRM your agent keeps current. Contacts and deals are markdown with typed frontmatter; a build step validates them (Pydantic), reconciles relationships both ways, and renders a queryable <code>state.json</code> plus a self-contained HTML dashboard with a due-for-touch view. Point an agent at it on a loop (email, calendar, transcripts) and it maintains the pipeline. No database, no SaaS. A starter pattern you clone.</p>
+    <p class="install"><code>git clone https://github.com/nigelglenday/crmmy</code></p>
+  </li>
+
+  <li class="tool">
     <a class="name" href="https://github.com/nigelglenday/whispertty">whispertty</a>
     <span class="kind">// input</span>
     <p class="desc">Record a meeting or call, transcribe with Whisper (mlx-whisper on Apple Silicon), optionally label speakers with pyannote. Batch, not real-time. Transcripts land as plain files in <code>~/Documents/transcripts/</code> so any agent on the same machine can read them. No cloud, no MCP, no API.</p>
@@ -164,7 +171,8 @@ pipx ensurepath
 pipx install git+https://github.com/nigelglenday/a-team
 pipx install git+https://github.com/nigelglenday/whispertty
 pipx install git+https://github.com/nigelglenday/skillbox
-git clone https://github.com/nigelglenday/eagent</pre>
+git clone https://github.com/nigelglenday/eagent
+git clone https://github.com/nigelglenday/crmmy</pre>
 
 <footer>
 <pre class="rule">--------------------------------------------------------------------------------</pre>

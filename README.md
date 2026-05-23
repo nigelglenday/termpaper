@@ -7,9 +7,10 @@ Landing page source for [termpaper.dev](https://termpaper.dev).
 - **[a-team](https://github.com/nigelglenday/a-team)** — parallel Claude Code session manager for Ghostty
 - **[skillbox](https://github.com/nigelglenday/skillbox)** — inventory and manage Claude Code skills, slash commands, subagents
 - **[eagent](https://github.com/nigelglenday/eagent)** — multi-session executive assistant pattern with file-based inboxes
+- **[crmmy](https://github.com/nigelglenday/crmmy)** — file-based CRM your AI agent maintains: markdown records, validated, with a generated dashboard
 - **[whispertty](https://github.com/nigelglenday/whispertty)** — record audio, transcribe with Whisper, label speakers
 
-All four are macOS, MIT-licensed. The first three are Python pipx installs; eagent is a starter pattern you clone.
+All five are macOS, MIT-licensed. a-team, skillbox, and whispertty are Python pipx installs; eagent and crmmy are starter patterns you clone.
 
 ## License
 
